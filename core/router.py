@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 from accounts.routes import router as accounts_router
 from events.routes import router as events_router
+from blog.routes import router as blog_router
 from core.middlewares.auth import get_token_header
 
 
@@ -12,7 +13,7 @@ router.include_router(
     accounts_router,
     prefix='/accounts',
     tags=['accounts'],
-    dependencies=[Depends(get_token_header)],
+    # dependencies=[Depends(get_token_header)],
     responses={404: {"description": "Not found"}},
 )
 
@@ -21,4 +22,11 @@ router.include_router(
     events_router,
     prefix='/events',
     tags=['events']
+)
+
+''' blog app '''
+router.include_router(
+    blog_router,
+    prefix='/blog',
+    tags=['blog']
 )

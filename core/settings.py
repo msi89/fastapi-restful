@@ -9,7 +9,7 @@ ALLOWED_HOSTS = []
 
 DATABASE = {
     "connections": {
-        "pgsql": {
+        "default": {
             "engine": "tortoise.backends.asyncpg",
             "credentials": {
                 "host": "localhost",
